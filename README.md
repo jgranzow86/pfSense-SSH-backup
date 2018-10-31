@@ -1,5 +1,8 @@
 # pfSense-SSH-backup
-a bash script that will pull and back up the pfsense XML
+a bash script that will pull and back up the pfsense XML. It will store as many as you like by setting the variable. If email is configured on the system it can email the user on failure of a back up.
+
+### Quick instructions
+- A user needs to be created on pfSense with **User - System: Copy files (scp)** permissions and an SSH key to allow the script to reach in and grab the XML config from pfSense.
 
 ### Example Cron job that runs every six hours
 
@@ -12,5 +15,5 @@ a bash script that will pull and back up the pfsense XML
 #| | +--------- day of        month (1 - 31)
 #| +----------- hour (0 - 23)
 #+------------- min (0 - 59)
-0 */6 * * * /bin/bash /home/jason/scripts/pfBackup.sh
+0 */6 * * * /bin/bash /home/USER/scripts/pfBackup.sh
 ```
