@@ -7,17 +7,14 @@ toEmailAddress="user@example.com"
 fromEmailAddress="pfsense@example.com (pfSense)"
 emailSubject="pfSense Backup Error"
 emailBody="Error backing up pfSense configureation file for $pfSenseServer."
-backUpPath="/path/to/folder"
+backUpPath="/path/to/backup/location"
 backUpsToKeep=28
 
 ## Check if backup directory exists, if it doesn't then create it
 if [ ! -d $backUpPath ]
 then
-  mkdir $backUpPath
+  mkdir -p $backUpPath
 fi
-
-## Move to backup directory
-cd $backUpPath
 
 ## Get latest backup
 scp $userName@$pfSenseServer:/conf/config.xml $backUpPath/config-$(date +%y%m%d%H%M).xml \
