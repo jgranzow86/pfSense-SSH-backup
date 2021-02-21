@@ -21,7 +21,7 @@ scp $userName@$pfSenseServer:/conf/config.xml $backUpPath/config-$(date +%y%m%d%
 || echo "$emailBody" |mailx -r "$fromEmailAddress" -s "$emailSubject" $toEmailAddress
 
 ## Clean up old backups
-if [ $(ls -t |tail -n +$(( $backUpsToKeep + 1 )) |wc -l) -gt 0 ]
+if [ $(ls -t $backUpPath |tail -n +$(( $backUpsToKeep + 1 )) |wc -l) -gt 0 ]
 then
   rm $(ls -t $backUpPath |tail -n +$(( $backUpsToKeep + 1 )))
 fi
